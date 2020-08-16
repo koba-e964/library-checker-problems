@@ -324,7 +324,9 @@ vector<ll> gen_seq(ll d, ll v) {
 }
 
 ll fact_mod(ll n, ll mod) {
-  ll d = 1 << 15;
+  // Find the smallest d s.t. d is a power of 2, d * d >= mod
+  ll d = 1;
+  while (d * d < mod) d *= 2;
   vector<ll> aux = gen_seq(d, d);
   ll ans = 1;
   ll lim = min(d, (n + 1) / d);
